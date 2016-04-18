@@ -1,0 +1,42 @@
+<ion-view ng-controller="GamesCtrl">
+  <ion-nav-title class="nav-title-custom">Generate tickets</ion-nav-title>
+
+  <ion-content>
+    <div class="col">
+      <div class="card row">
+        <div class="col">
+          <label>
+            <span style="font-size:24px;">14 April</span> <br/>
+            <span style="font-size:16px;">Sea Eagles <br/>
+            v Eels</span>
+          </label>
+        </div>
+        <div class="col" id="club-logo">
+        </div>
+        <div class="col">
+          <label class="col" style="font-size:16px;">Brookvale Oval</label>
+          <label class="col" style="font-size:16px;">Start 7:30pm</label>
+          <label class="col" style="font-size:16px;">End 9:00pm</label>
+        </div>
+      </div>
+      <div class="row">
+        <label class="col tickets-header">Tickets</label>
+        <button class="button generate-btn col-50" ng-click="generate()">GENERATE ALL</button>
+      </div>
+      <ion-list ng-repeat="tick in tickets track by $index">
+        <ion-item class="ticket-item row">
+          <label style="color: black; text-decoration: none;" class="col">{{tick.number}}</label>
+          <a class="button button-clear col-10" href="#/login/tickets/{{tick.number}}">VIEW</a>
+        </ion-item>
+      </ion-list>
+      <div ng-hide="barcode.done">
+        <label class="barcode-input item item-input item-floating-label col-75">
+          <span class="input-label">Enter barcode</span>
+          <input type="tel" autocorrect="off" autocapitalize="none" placeholder="Enter barcode" ng-model="barcode.number">
+        </label>
+      </div>
+      <div class="col">
+        <button class="button clear-btn col-50" ng-click="clear()">CLEAR</button>
+    </div>
+  </ion-content>
+</ion-view>
